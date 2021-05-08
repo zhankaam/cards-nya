@@ -1,24 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route, Switch } from 'react-router-dom';
 import './App.css';
+import {Navbar} from "./d1-main/ui/routing/Navbar";
+import {HomePage} from "./d1-main/ui/components/home_page/HomePage";
+import {Login} from "./d1-main/ui/components/login_page/Login";
+import {Registration} from "./d1-main/ui/components/registration_page/Registration";
+import {Profile} from "./d1-main/ui/components/profile_page/Profile";
+import {ForgotPassword} from "./d1-main/ui/components/forgot_password_page/ForgotPassword";
+import {ResetPassword} from "./d1-main/ui/components/reset_password_page/ResetPassword";
+import {Error} from "./d1-main/ui/components/error_page/Error";
+import {Test} from "./d1-main/ui/components/test_page/Test";
+
+
+
+export const RoutePath = {
+  HOME_PAGE: '/',
+  LOGIN: '/login',
+  REGISTRATION: '/register',
+  PROFILE:'/profile',
+  FORGOT_PASSWORD:'/forgotPassword',
+  RESET_PASSWORD:'/resetPassword',
+  ERROR:'/error',
+  TEST:'/test'
+}
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Navbar/>
+      </div>
+      <div>
+        <Switch>
+            <Route exact path={RoutePath.HOME_PAGE} render={() => <HomePage/>} />
+            <Route exact path={RoutePath.LOGIN} render={() => <Login/>} />
+            <Route exact path={RoutePath.REGISTRATION} render={() => <Registration/>} />
+            <Route exact path={RoutePath.PROFILE} render={() => <Profile/>} />
+            <Route exact path={RoutePath.FORGOT_PASSWORD} render={() => <ForgotPassword/>} />
+            <Route exact path={RoutePath.RESET_PASSWORD} render={() => <ResetPassword/>} />
+            <Route exact path={RoutePath.ERROR} render={() => <Error/>} />
+            <Route exact path={RoutePath.TEST} render={() => <Test/>} />
+        </Switch>
+      </div>
     </div>
   );
 }
