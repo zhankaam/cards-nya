@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 30px;
+    position: relative;
+}
+
+.title {
+    font-family: 'Old Standard TT', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    text-align: center;
+    background-color: #c0ded9;
+}
+.image {
+   position: absolute;
+    left: -7em;
+    top: 12em;
+}
