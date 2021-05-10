@@ -1,10 +1,10 @@
 import {ActionTypes} from "../actions/ActionCreators";
 import {authAPI, LoginResponseType, RegistrationRequestType} from "../../dal/api";
 import {Dispatch} from "redux";
-import {setAppStatusAC} from "./app-reducer";
+import {setAppStatusAC, setAppStatusActionType} from "./app-reducer";
 
 const initialState = {
-  isAuth: false,
+    isAuth: false,
     user: {
         email: '',
         isAdmin: false,
@@ -15,8 +15,8 @@ const initialState = {
     }
 }
 
-export const LoginReducer = (state:  InitialStateType = initialState, action: ActionsType): InitialStateType => {
-    switch (action.type){
+export const LoginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+    switch (action.type) {
         case ActionTypes.IS_AUTH:
             return {
                 ...state,
@@ -41,25 +41,47 @@ export const LoginReducer = (state:  InitialStateType = initialState, action: Ac
 }
 
 export const isAuthAC = (isAuth: boolean) => ({
-    type: ActionTypes.IS_AUTH, payload: {isAuth},} as const)
+    type: ActionTypes.IS_AUTH, payload: {isAuth},
+} as const)
 
 export const updateProfileAC = (user: LoginResponseType) => ({
-    type: ActionTypes.UPDATE_PROFILE, payload: {user} }as const)
+    type: ActionTypes.UPDATE_PROFILE, payload: {user}
+} as const)
 
 export const setUserDataAC = (userData: LoginResponseType) => ({
-    type: ActionTypes.SET_USER_DATA, payload: {userData}}as const)
+    type: ActionTypes.SET_USER_DATA, payload: {userData}
+} as const)
 
 
-export const loginTC = (regData: RegistrationRequestType) => (dispatch: Dispatch) => {
-    dispatch(setAppStatusAC(false))
+export const loginTC = (regData: RegistrationRequestType) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(setAppStatusAC("loading"))
     return authAPI.login(regData)
         .then((res) => {
             dispatch(setUserDataAC(res.data))
-            dispatch(setAppStatusAC(true))
+            dispatch(setAppStatusAC("success"))
             dispatch(isAuthAC(true))
         })
-        .catch()
+        .catch((err) => {
+            dispatch(setAppStatusAC("failed"))
+            console.error(err)
+        })
+}
+export const logOutTC = () => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(setAppStatusAC('loading'))
+    authAPI.logout()
+        .then(res => {
+            dispatch(isAuthAC(false));
+            dispatch(setAppStatusAC('success'))
+        })
+        .catch(err => {
+            dispatch(setAppStatusAC('failed'));
+            console.error(err)
+        })
 }
 
 type InitialStateType = typeof initialState
-export type ActionsType =  ReturnType<typeof isAuthAC> | ReturnType<typeof updateProfileAC> |  ReturnType<typeof setUserDataAC>
+export type ActionsType =
+    ReturnType<typeof isAuthAC>
+    | ReturnType<typeof updateProfileAC>
+    | ReturnType<typeof setUserDataAC>
+    | setAppStatusActionType

@@ -10,27 +10,24 @@ export const Registration = () => {
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [confirmPassword, setConfirmPassword] = useState<string>("")
     const isRegistration = useTypedSelector(state => state.register.isRegistration)
+    const status = useTypedSelector(state => state.app.status)
 
     const dispatch = useDispatch()
-    const regData = {email,password}
+    const regData = {email, password}
 
-    const sendEmailHandler  = (e:ChangeEvent<HTMLInputElement>) => {
+    const sendEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
     }
 
-    const sendPasswordHandler  = (e:ChangeEvent<HTMLInputElement>) => {
+    const sendPasswordHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value)
     }
 
-    const checkPasswordHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            setConfirmPassword(e.currentTarget.value)
-    }
 
     const sendData = () => dispatch(registerTC({regData}))
 
-    if(isRegistration){
+    if (isRegistration) {
         return <Redirect to={RoutePath.LOGIN}/>
     }
 
@@ -41,7 +38,7 @@ export const Registration = () => {
                 <input type={"text"}
                        className={s.input}
                        placeholder={"email"}
-                value={email}
+                       value={email}
                        onChange={sendEmailHandler}
                 />
             </div>
@@ -49,20 +46,15 @@ export const Registration = () => {
                 <input type={"password"}
                        className={s.input}
                        placeholder={"password"}
-                value={password}
+                       value={password}
                        onChange={sendPasswordHandler}
                 />
             </div>
             <div>
-                <input type={"password"}
-                       className={s.input}
-                       placeholder={"confirm password"}
-                        value={confirmPassword}
-                       onChange={checkPasswordHandler}
-                />
+                <button className={s.btn} onClick={sendData} disabled={status === "loading"}>
+                    Sign Up</button>
             </div>
-            <div><button  className={s.btn} onClick={sendData}>Sign Up</button></div>
-            <NavLink to={RoutePath.LOGIN}  className={s.routePath}>Log In</NavLink>
+            <NavLink to={RoutePath.LOGIN} className={s.routePath}>Log In</NavLink>
         </div>
     );
 };

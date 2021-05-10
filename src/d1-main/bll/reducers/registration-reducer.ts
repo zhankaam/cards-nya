@@ -26,14 +26,17 @@ export const registerUsersAC = (isRegistration: boolean) => ({
 
 
 export const registerTC = (regData: RegistrationRequestType) => (dispatch: Dispatch) => {
-    dispatch(setAppStatusAC(false))
+    dispatch(setAppStatusAC("loading"))
     return authAPI.register({...regData})
         .then((res) => {
             dispatch(registerUsersAC(true))
-            dispatch(setAppStatusAC(true))
+            dispatch(setAppStatusAC("success"))
 
         })
-        .catch()
+        .catch((err) => {
+            dispatch(setAppStatusAC("failed"))
+            console.error(err)
+        })
 }
 
 type InitialStateType = typeof initialState

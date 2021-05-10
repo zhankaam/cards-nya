@@ -5,7 +5,6 @@ import {Navbar} from "./d1-main/ui/routing/Navbar";
 import {HomePage} from "./d1-main/ui/components/home_page/HomePage";
 import {Login} from "./d1-main/ui/components/login_page/Login";
 import {Registration} from "./d1-main/ui/components/registration_page/Registration";
-import {Profile} from "./d1-main/ui/components/profile_page/Profile";
 import {ForgotPassword} from "./d1-main/ui/components/forgot_password_page/ForgotPassword";
 import {ResetPassword} from "./d1-main/ui/components/reset_password_page/ResetPassword";
 import {Error} from "./d1-main/ui/components/error_page/Error";
@@ -18,7 +17,6 @@ export const RoutePath = {
     HOME_PAGE: '/',
     LOGIN: '/login',
     REGISTRATION: '/register',
-    PROFILE: '/profile',
     FORGOT_PASSWORD: '/forgotPassword',
     RESET_PASSWORD: '/resetPassword',
     ERROR: '/error',
@@ -40,7 +38,6 @@ function App() {
                     <Route exact path={RoutePath.HOME_PAGE} render={() => <HomePage/>}/>
                     <Route exact path={RoutePath.LOGIN} render={() => <Login/>}/>
                     <Route exact path={RoutePath.REGISTRATION} render={() => <Registration/>}/>
-                    <Route exact path={RoutePath.PROFILE} render={() => <Profile/>}/>
                     <Route exact path={RoutePath.FORGOT_PASSWORD} render={() => <ForgotPassword/>}/>
                     <Route exact path={RoutePath.RESET_PASSWORD} render={() => <ResetPassword/>}/>
                     <Route exact path={RoutePath.PACKS} render={() => <Packs/>}/>

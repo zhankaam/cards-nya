@@ -29,3 +29,13 @@
     right: -4em;
     top: 29em;
 }
+.btn {
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #000000;
+}
