@@ -35,7 +35,7 @@ export type RegistrationRequestType = {
     regData: {
         email: string
         password: string
-        rememberMe: boolean
+        rememberMe?: boolean
     }
 }
 

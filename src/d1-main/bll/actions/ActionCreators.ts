@@ -1,6 +1,9 @@
-export const enum ActionTypes {
+import {LoginResponseType} from "../../dal/api";
+
+export enum ActionTypes {
     SET_STATUS = 'APP/SET-STATUS',
     INITIALIZED_SUCCESS = 'APP/INITIALIZED_SUCCESS',
+    SET_USER_DATA = 'LOGIN/SET_USER_DATA',
     IS_AUTH = 'LOGIN/IS_AUTH',
     UPDATE_PROFILE = 'LOGIN/UPDATE_PROFILE',
     LOGOUT = 'LOGOUT/LOGOUT_USERS',
@@ -18,25 +21,4 @@ export const enum ActionTypes {
     DELETE_CARDS = 'CARDS/DELETE_PACKS',
 }
 
-export const isAuthAC = (isAuth: boolean) => ({
-    type: ActionTypes.IS_AUTH, payload: {isAuth},} as const)
 
-export const updateProfileAC = (user: UserDataType) => ({
-    type: ActionTypes.UPDATE_PROFILE, payload: {user} }as const)
-
-export type UserDataType = {
-    _id: string
-    email: string
-    name: string
-    avatar: string
-    publicCardPacksCount: number
-    created: number
-    updated: number
-    isAdmin: boolean
-    verified: boolean
-    rememberMe: boolean
-    error: string
-}
-
-
-export type ActionsType =  ReturnType<typeof isAuthAC> | ReturnType<typeof updateProfileAC>

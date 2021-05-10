@@ -22,6 +22,8 @@ export const setAppStatusAC = (status:boolean) => ({ type: ActionTypes.SET_STATU
 export const initializedSuccess = () => ({type: ActionTypes.INITIALIZED_SUCCESS} as const)
 
 
+type setAppStatusActionType = ReturnType<typeof setAppStatusAC>;
+type appInitializedActionType = ReturnType<typeof initializedSuccess>;
 type ActionsType =
-    |  ReturnType<typeof setAppStatusAC>
-    | ReturnType<typeof initializedSuccess>
+    |  setAppStatusActionType
+    | appInitializedActionType

@@ -1,9 +1,10 @@
-import React, {ChangeEvent, ChangeEventHandler, MouseEventHandler, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {NavLink, Redirect} from 'react-router-dom';
 import s from './Login.module.css'
 import {RoutePath} from "../../../../App";
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useTypedSelector} from "../../../bll/store";
+import {loginTC} from "../../../bll/reducers/login-reducer";
 
 export const Login = () => {
 
@@ -11,8 +12,9 @@ export const Login = () => {
     const [password, setPassword] = useState<string>("")
     const [rememberMe, setRememberMe] = useState<boolean>(false)
     const isAuth = useTypedSelector(state => state.login.isAuth)
-    const status = useTypedSelector(state => state.app.status)
+   // const status = useTypedSelector(state => state.app.status)
     const dispatch = useDispatch()
+    const regData = {email,password,rememberMe}
 
     const sendEmailHandler  = (e:ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
@@ -25,6 +27,8 @@ export const Login = () => {
     const sendRememberMeHandler  = (e:ChangeEvent<HTMLInputElement>) => {
         setRememberMe(e.currentTarget.checked)
     }
+
+    const sendData = () => dispatch(loginTC({regData}))
 
     if(isAuth){
         return <Redirect to={RoutePath.HOME_PAGE}/>
@@ -56,7 +60,7 @@ export const Login = () => {
                 />
             </div>
             <div>
-                <button className={s.btn}>Sign In</button>
+                <button className={s.btn} onClick={sendData}>Sign In</button>
             </div>
             <NavLink to={RoutePath.FORGOT_PASSWORD} className={s.routePath}>Forgot Password? </NavLink>
             <div>
