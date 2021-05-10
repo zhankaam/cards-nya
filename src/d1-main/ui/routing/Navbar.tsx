@@ -9,25 +9,25 @@ export const Navbar = () => {
             <div className={s.title}>
                 <NavLink to={RoutePath.HOME_PAGE} className={s.nav}>Home</NavLink>
             </div>
-            <div  className={s.title}>
+            <div className={s.title}>
                 <NavLink to={RoutePath.LOGIN} className={s.nav}>Log in</NavLink>
             </div>
-            <div  className={s.title}>
+            <div className={s.title}>
                 <NavLink to={RoutePath.REGISTRATION} className={s.nav}>Sign Up</NavLink>
             </div>
-            <div  className={s.title}>
+            <div className={s.title}>
                 <NavLink to={RoutePath.FORGOT_PASSWORD} className={s.nav}>Forgot Password</NavLink>
             </div>
-            <div  className={s.title}>
-                <NavLink to={RoutePath.RESET_PASSWORD} className={s.nav}>Reset Password</NavLink>
-            </div>
-            <div  className={s.title}>
+            {/*<div  className={s.title}>*/}
+            {/*    <NavLink to={RoutePath.RESET_PASSWORD} className={s.nav}>Reset Password</NavLink>*/}
+            {/*</div>*/}
+            <div className={s.title}>
                 <NavLink to={RoutePath.PACKS} className={s.nav}>Packs</NavLink>
             </div>
-            <div  className={s.title}>
+            <div className={s.title}>
                 <NavLink to={RoutePath.CARDS} className={s.nav}>Cards</NavLink>
             </div>
-            <div  className={s.title}>
+            <div className={s.title}>
                 <NavLink to={RoutePath.ERROR} className={s.nav}>Error </NavLink>
             </div>
         </div>

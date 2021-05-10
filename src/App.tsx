@@ -6,7 +6,6 @@ import {HomePage} from "./d1-main/ui/components/home_page/HomePage";
 import {Login} from "./d1-main/ui/components/login_page/Login";
 import {Registration} from "./d1-main/ui/components/registration_page/Registration";
 import {ForgotPassword} from "./d1-main/ui/components/forgot_password_page/ForgotPassword";
-import {ResetPassword} from "./d1-main/ui/components/reset_password_page/ResetPassword";
 import {Error} from "./d1-main/ui/components/error_page/Error";
 import {Test} from "./d1-main/ui/components/test_page/Test";
 import {Packs} from "./d1-main/ui/components/packs_page/Packs";
@@ -39,7 +38,7 @@ function App() {
                     <Route exact path={RoutePath.LOGIN} render={() => <Login/>}/>
                     <Route exact path={RoutePath.REGISTRATION} render={() => <Registration/>}/>
                     <Route exact path={RoutePath.FORGOT_PASSWORD} render={() => <ForgotPassword/>}/>
-                    <Route exact path={RoutePath.RESET_PASSWORD} render={() => <ResetPassword/>}/>
+                    {/*<Route exact path={RoutePath.RESET_PASSWORD} render={() => <ResetPassword/>}/>*/}
                     <Route exact path={RoutePath.PACKS} render={() => <Packs/>}/>
                     <Route exact path={RoutePath.CARDS} render={() => <Cards/>}/>
                     <Route exact path={RoutePath.ERROR} render={() => <Error/>}/>
