@@ -15,7 +15,7 @@ const initialState = {
     }
 }
 
-export const LoginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const loginReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case ActionTypes.IS_AUTH:
             return {
