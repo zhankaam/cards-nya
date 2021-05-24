@@ -6,6 +6,9 @@ import {useTypedSelector} from "../../../bll/store";
 import {useDispatch} from 'react-redux';
 import {forgotPasswordTC} from "../../../bll/reducers/forgotPass-reducer";
 import {RequestStatusType} from "../../../bll/reducers/app-reducer";
+import {Title} from "../../../../d2-common/components/Title/Title";
+import {Input} from "../../../../d2-common/components/Input/Input";
+import {Button} from "../../../../d2-common/components/Button/Button";
 
 export const ForgotPassword = () => {
 
@@ -23,21 +26,9 @@ export const ForgotPassword = () => {
 
     return (
         <div className={s.wrapper}>
-            <h2 className={s.title}>Forgot Password</h2>
-            <div>
-                <input type={"text"}
-                       value={restorePass}
-                       className={s.input}
-                       placeholder={"enter your email address"}
-                       onChange={onChangePassHandler}
-                />
-            </div>
-            <div>
-                <button className={s.btn} onClick={restorePassHandler}
-                        disabled={status === "loading"}
-                >Send email
-                </button>
-            </div>
+            <Title text="Forgot Password"/>
+            <Input type="text" value={restorePass} placeholder="enter your email address" onChange={onChangePassHandler}/>
+            <Button text="Send email" disabled={status === "loading"} onClick={restorePassHandler}/>
             <NavLink to={RoutePath.LOGIN} className={s.link}>Sign In</NavLink>
         </div>
     );

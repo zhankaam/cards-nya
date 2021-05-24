@@ -5,6 +5,9 @@ import {NavLink, Redirect} from 'react-router-dom';
 import {useTypedSelector} from "../../../bll/store";
 import {useDispatch} from 'react-redux';
 import {registerTC} from "../../../bll/reducers/registration-reducer";
+import {Button} from "../../../../d2-common/components/Button/Button";
+import {Title} from "../../../../d2-common/components/Title/Title";
+import {Input} from "../../../../d2-common/components/Input/Input";
 
 export const Registration = () => {
 
@@ -24,7 +27,6 @@ export const Registration = () => {
         setPassword(e.currentTarget.value)
     }
 
-
     const sendData = () => dispatch(registerTC({regData}))
 
     if (isRegistration) {
@@ -33,27 +35,10 @@ export const Registration = () => {
 
     return (
         <div className={s.wrapper}>
-            <h1 className={s.title}>Create your account</h1>
-            <div>
-                <input type={"text"}
-                       className={s.input}
-                       placeholder={"email"}
-                       value={email}
-                       onChange={sendEmailHandler}
-                />
-            </div>
-            <div>
-                <input type={"password"}
-                       className={s.input}
-                       placeholder={"password"}
-                       value={password}
-                       onChange={sendPasswordHandler}
-                />
-            </div>
-            <div>
-                <button className={s.btn} onClick={sendData} disabled={status === "loading"}>
-                    Sign Up</button>
-            </div>
+            <Title text="Create your account"/>
+            <Input type="text" value={email} placeholder="email" onChange={sendEmailHandler}/>
+            <Input type="password" value={password} placeholder="password" onChange={sendPasswordHandler}/>
+            <Button text="Sign Up" disabled={status === "loading"} onClick={sendData}/>
             <NavLink to={RoutePath.LOGIN} className={s.routePath}>Log In</NavLink>
         </div>
     );

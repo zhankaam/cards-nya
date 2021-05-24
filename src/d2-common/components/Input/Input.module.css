@@ -1,0 +1,12 @@
+.input {
+    min-width: 100%;
+    font-family: 'Poppins', sans-serif;
+    /*color: #373a3c;*/
+    font-weight: bold;
+    outline: 0;
+    border: 1px solid #666;
+    border-radius: 3px;
+    padding: .5rem 1rem;
+    margin-bottom: 20px;
+    /*background-color: #ECF0F5;*/
+}

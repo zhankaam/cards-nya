@@ -5,6 +5,9 @@ import {RoutePath} from "../../../../App";
 import {useDispatch} from 'react-redux';
 import {useTypedSelector} from "../../../bll/store";
 import {loginTC} from "../../../bll/reducers/login-reducer";
+import {Title} from "../../../../d2-common/components/Title/Title";
+import {Input} from "../../../../d2-common/components/Input/Input";
+import {Button} from "../../../../d2-common/components/Button/Button";
 
 export const Login = () => {
 
@@ -12,15 +15,16 @@ export const Login = () => {
     const [password, setPassword] = useState<string>("")
     const [rememberMe, setRememberMe] = useState<boolean>(false)
     const isAuth = useTypedSelector(state => state.login.isAuth)
-   // const status = useTypedSelector(state => state.app.status)
-    const dispatch = useDispatch()
-    const regData = {email,password,rememberMe}
+    const status = useTypedSelector(state => state.app.status)
 
-    const sendEmailHandler  = (e:ChangeEvent<HTMLInputElement>) => {
+    const dispatch = useDispatch()
+    const regData = {email, password, rememberMe}
+
+    const sendEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
     }
 
-    const sendPasswordHandler  = (e:ChangeEvent<HTMLInputElement>) => {
+    const sendPasswordHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value)
     }
 
@@ -36,32 +40,11 @@ export const Login = () => {
 
     return (
         <div className={s.wrapper}>
-            <h1 className={s.title}>Login</h1>
-            <div>
-                <input type={"text"}
-                       className={s.input}
-                       placeholder={"email"}
-                       value={email}
-                       onChange={sendEmailHandler}
-                /></div>
-            <div>
-                <input type={"password"}
-                       className={s.input}
-                       placeholder={"password"}
-                       value={password}
-                       onChange={sendPasswordHandler}
-                />
-            </div>
-            <div>
-                <input type={"checkbox"}
-                       className={s.checkbox}
-                       checked={rememberMe}
-                       onChange={sendRememberMeHandler}
-                />
-            </div>
-            <div>
-                <button className={s.btn} onClick={sendData}>Sign In</button>
-            </div>
+            <Title text="Login"/>
+            <Input type="text" value={email} placeholder="email" onChange={sendEmailHandler}/>
+            <Input type="password" value={password} placeholder="password" onChange={sendPasswordHandler}/>
+            <Input type="checkbox" checked={rememberMe} onChange={sendRememberMeHandler}/>
+            <Button text="Sign In" disabled={status === "loading"} onClick={sendData}/>
             <NavLink to={RoutePath.FORGOT_PASSWORD} className={s.routePath}>Forgot Password? </NavLink>
             <div>
                 <NavLink to={RoutePath.REGISTRATION}
