@@ -10,3 +10,11 @@
     margin-bottom: 20px;
     /*background-color: #ECF0F5;*/
 }
+
+.input:focus {
+    border-color: inherit;
+    border-bottom: 2px solid #ddd;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}

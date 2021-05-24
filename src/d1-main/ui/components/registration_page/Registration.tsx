@@ -1,13 +1,14 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './../login_page/Login.module.css'
 import {RoutePath} from "../../../../App";
-import {NavLink, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {useTypedSelector} from "../../../bll/store";
 import {useDispatch} from 'react-redux';
 import {registerTC} from "../../../bll/reducers/registration-reducer";
 import {Button} from "../../../../d2-common/components/Button/Button";
 import {Title} from "../../../../d2-common/components/Title/Title";
 import {Input} from "../../../../d2-common/components/Input/Input";
+import {Route} from "../../../../d2-common/components/Route/Route";
 
 export const Registration = () => {
 
@@ -39,7 +40,7 @@ export const Registration = () => {
             <Input type="text" value={email} placeholder="email" onChange={sendEmailHandler}/>
             <Input type="password" value={password} placeholder="password" onChange={sendPasswordHandler}/>
             <Button text="Sign Up" disabled={status === "loading"} onClick={sendData}/>
-            <NavLink to={RoutePath.LOGIN} className={s.routePath}>Log In</NavLink>
+            <Route to={RoutePath.LOGIN} text={"Log In"}/>
         </div>
     );
 };

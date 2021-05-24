@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from './ForgotPassword.module.css'
 import {RoutePath} from "../../../../App";
-import {NavLink, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {useTypedSelector} from "../../../bll/store";
 import {useDispatch} from 'react-redux';
 import {forgotPasswordTC} from "../../../bll/reducers/forgotPass-reducer";
@@ -9,6 +9,7 @@ import {RequestStatusType} from "../../../bll/reducers/app-reducer";
 import {Title} from "../../../../d2-common/components/Title/Title";
 import {Input} from "../../../../d2-common/components/Input/Input";
 import {Button} from "../../../../d2-common/components/Button/Button";
+import {Route} from "../../../../d2-common/components/Route/Route";
 
 export const ForgotPassword = () => {
 
@@ -29,7 +30,7 @@ export const ForgotPassword = () => {
             <Title text="Forgot Password"/>
             <Input type="text" value={restorePass} placeholder="enter your email address" onChange={onChangePassHandler}/>
             <Button text="Send email" disabled={status === "loading"} onClick={restorePassHandler}/>
-            <NavLink to={RoutePath.LOGIN} className={s.link}>Sign In</NavLink>
+            <Route to={RoutePath.LOGIN} text={"Log In"}/>
         </div>
     );
 };

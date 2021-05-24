@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
-import {NavLink, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import s from './Login.module.css'
 import {RoutePath} from "../../../../App";
 import {useDispatch} from 'react-redux';
@@ -8,6 +8,7 @@ import {loginTC} from "../../../bll/reducers/login-reducer";
 import {Title} from "../../../../d2-common/components/Title/Title";
 import {Input} from "../../../../d2-common/components/Input/Input";
 import {Button} from "../../../../d2-common/components/Button/Button";
+import {Route} from "../../../../d2-common/components/Route/Route";
 
 export const Login = () => {
 
@@ -45,10 +46,9 @@ export const Login = () => {
             <Input type="password" value={password} placeholder="password" onChange={sendPasswordHandler}/>
             <Input type="checkbox" checked={rememberMe} onChange={sendRememberMeHandler}/>
             <Button text="Sign In" disabled={status === "loading"} onClick={sendData}/>
-            <NavLink to={RoutePath.FORGOT_PASSWORD} className={s.routePath}>Forgot Password? </NavLink>
+            <Route to={RoutePath.FORGOT_PASSWORD} text={"Forgot Password?"}/>
             <div>
-                <NavLink to={RoutePath.REGISTRATION}
-                         className={s.routePath}>Don't have an account?Sign Up </NavLink>
+                <Route to={RoutePath.REGISTRATION} text={"Don't have an account?Sign Up"}/>
             </div>
         </div>
     );

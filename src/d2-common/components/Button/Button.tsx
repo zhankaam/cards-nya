@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../../../d1-main/ui/components/login_page/Login.module.css";
+import s from './Button.module.css'
 
 type PropsType = {
     text: string
