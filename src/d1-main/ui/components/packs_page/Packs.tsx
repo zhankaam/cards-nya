@@ -6,7 +6,7 @@ export const Packs = () => {
     return (
         <div className={s.container}>
             <Title text="Packs"/>
-            <table className="table table-hover">
+            <table>
                 <thead>
                 <tr>
                     <th scope="col" style={{width: "10%"}}>ID</th>

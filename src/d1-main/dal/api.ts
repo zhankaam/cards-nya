@@ -36,8 +36,8 @@ const forgotPassMessage = `<div style="background-color: lime; padding: 15px"> e
 
 export type RegistrationRequestType = {
     regData: {
-        email: string
-        password: string
+        email: any
+        password: any
         rememberMe?: boolean
     }
 }

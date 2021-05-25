@@ -1,4 +1,4 @@
-import {ActionTypes} from "../actions/ActionCreators";
+import {ActionTypes} from "../actions/types";
 import {authAPI, RegistrationRequestType} from "../../dal/api";
 import {Dispatch} from "redux";
 import {setAppStatusAC} from "./app-reducer";

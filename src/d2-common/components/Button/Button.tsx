@@ -5,6 +5,7 @@ type PropsType = {
     text: string
     onClick: () => void
     disabled: boolean
+    type?: string
 }
 
 export const Button: React.FC<PropsType> = (props) => {

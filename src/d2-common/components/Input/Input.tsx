@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, FocusEventHandler} from 'react';
 import s from './Input.module.css';
 
 type PropsType = {
@@ -7,6 +7,9 @@ type PropsType = {
     value?: string
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
     checked?: boolean
+    onBlur?: FocusEventHandler<HTMLInputElement> | undefined
+    name?: string
+    autoComplete?: string
 }
 
 export const Input: React.FC<PropsType> = (props) => {
@@ -17,6 +20,8 @@ export const Input: React.FC<PropsType> = (props) => {
                    placeholder={props.placeholder}
                    value={props.value}
                    onChange={props.onChange}
+                   autoComplete={props.autoComplete}
+                   onBlur={props.onBlur}
             />
         </div>
     );
