@@ -27,7 +27,7 @@ export const isForgotPassword = (isForgotPass: boolean) => ({
 
 type ActionsType = ReturnType<typeof isForgotPassword> | setAppStatusActionType
 
-export const forgotPasswordTC = (email: string) => (dispatch: Dispatch<ActionsType>) => {
+export const forgotPasswordTC = (email: any) => (dispatch: Dispatch<ActionsType>) => {
     dispatch(setAppStatusAC("loading"))
     authAPI.forgot(email)
         .then(() => {

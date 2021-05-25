@@ -44,11 +44,11 @@ export const Login = () => {
         return <Redirect to={RoutePath.HOME_PAGE}/>
     }
 
-    const validationStyle = {
-        color: 'red',
-        fontFamily: 'Arial',
-        padding: '3px',
-    }
+     const validationStyle = {
+         color: 'red',
+         fontFamily: 'Arial',
+         padding: '3px',
+     }
 
     return (
         <div className={s.wrapper}>
