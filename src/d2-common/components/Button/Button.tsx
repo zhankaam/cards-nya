@@ -4,7 +4,7 @@ import s from './Button.module.css'
 type PropsType = {
     text: string
     onClick: () => void
-    disabled: boolean
+    disabled?: boolean
     type?: string
 }
 

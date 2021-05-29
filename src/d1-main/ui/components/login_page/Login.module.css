@@ -8,3 +8,8 @@
     margin: 50px;
     padding: 10px;
 }
+
+.wrapper > form > div {
+    display: flex;
+    justify-content: center;
+}

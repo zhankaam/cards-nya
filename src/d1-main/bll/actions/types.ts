@@ -16,5 +16,3 @@ export enum ActionTypes {
     UPDATE_CARDS = 'CARDS/UPDATE_CARDS',
     DELETE_CARDS = 'CARDS/DELETE_PACKS',
 }
-
-

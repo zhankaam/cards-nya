@@ -74,7 +74,7 @@ export const Registration = () => {
                 {(password.isDirty && password.maxLengthError) && <div style={validationStyle}>too long password</div>}
                 <Button
                     text="Sign Up"
-                    disabled={status === "loading"}
+                    //disabled={status === "loading"}
                     onClick={sendData}
                 />
             </form>
